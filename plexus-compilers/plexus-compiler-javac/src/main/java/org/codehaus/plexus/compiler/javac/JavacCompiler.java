@@ -629,14 +629,14 @@ public class JavacCompiler extends AbstractCompiler {
     }
 
     // Match ~95% of existing JDK exception name patterns (last checked for JDK 21)
-    private static final Pattern STACK_TRACE_FIRST_LINE = Pattern.compile("^(?:[\\w+.-]+\\.)[\\w$]*?(?:"
+    private static final Pattern STACK_TRACE_FIRST_LINE = Pattern.compile("^\\s*(?:[\\w+.-]+\\.)[\\w$]*?(?:"
             + "Exception|Error|Throwable|Failure|Result|Abort|Fault|ThreadDeath|Overflow|Warning|"
             + "NotSupported|NotFound|BadArgs|BadClassFile|Illegal|Invalid|Unexpected|Unchecked|Unmatched\\w+"
             + ").*$");
 
     // Match exception causes, existing and omitted stack trace elements
     private static final Pattern STACK_TRACE_OTHER_LINE =
-            Pattern.compile("^(?:Caused by:\\s.*|\\s*at .*|\\s*\\.\\.\\.\\s\\d+\\smore)$");
+            Pattern.compile("^\\s*(?:Caused by:\\s.*|\\s*at .*|\\s*\\.\\.\\.\\s\\d+\\smore)$");
 
     // Match generic javac errors with 'javac:' prefix, JMV init and boot layer init errors
     private static final Pattern JAVAC_OR_JVM_ERROR =
